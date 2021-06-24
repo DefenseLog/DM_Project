@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1624434113 source:c:\users\dell\documents\github\school codes\dm_project\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+
+1624350196 source:c:\users\dell\documents\github\school codes\dm_project\src\myset.cpp
+	"MySet.h"
+
+1624350195 c:\users\dell\documents\github\school codes\dm_project\include\myset.h
+
