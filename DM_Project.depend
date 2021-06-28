@@ -9,3 +9,15 @@
 
 1624350195 c:\users\dell\documents\github\school codes\dm_project\include\myset.h
 
+1624873496 source:c:\users\dell\documents\github\school codes\dm_project\dm_project\main.cpp
+	<iostream>
+	<vector>
+	<MySet.h>
+
+1624645451 source:c:\users\dell\documents\github\school codes\dm_project\dm_project\src\myset.cpp
+	"MySet.h"
+
+1624643620 c:\users\dell\documents\github\school codes\dm_project\dm_project\include\myset.h
+	<vector>
+	<iostream>
+

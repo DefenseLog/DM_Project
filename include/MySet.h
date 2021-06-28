@@ -1,24 +1,30 @@
+
+
 #ifndef MYSET_H
 #define MYSET_H
 
+#include <vector>
+#include <iostream>
+
+using namespace std;
 
 class MySet
 {
     public:
         MySet();
-        virtual ~MySet();
 
-        void Union(MySet, MySet);
-        void Intersection(MySet, MySet);
-        void Diffference(MySet, MySet);
-        vector<unsigned int> getSet();
-        void setSet(vector<unsigned int> assigned);
+
+        void Union(MySet&, MySet&);
+        void Intersection(MySet&, MySet&);
+        void Diffference(MySet&, MySet&);
+        vector<string> getSet();
+        void setSet(vector<string>& assigned);
+        vector<string> elements;
 
     protected:
 
     private:
-        unsigned int cardinality;
-        vector<unsigned int> elements;
+
 };
 
 #endif // MYSET_H

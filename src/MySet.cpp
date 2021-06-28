@@ -1,31 +1,34 @@
 #include "MySet.h"
 
+
 MySet::MySet()
 {
-    //ctor
 }
 
-MySet::~MySet()
-{
-    //dtor
-}
-
-void Union(MySet, MySet){
+void MySet::Union(MySet& set2, MySet& outSet){
 
 }
 
-void Intersection(MySet, MySet){
+void MySet::Intersection(MySet& set2, MySet& outSet){
+    for (int i = 0; i < elements.size(); i++){
+        for (int j = 0; j < set2.elements.size() ; j++){
+            if (elements[i]== set2.elements[j]){
+                outSet.elements.push_back(elements[i]);
+            }
+        }
+    }
+}
+
+void MySet::Diffference(MySet& set2, MySet& outSet){
 
 }
 
-void Diffference(MySet, MySet){
-
+vector<string> MySet::getSet(){
+  return elements;
 }
 
-vector<unsigned int> getSet(){
-    return elements;
-}
-
-void setSet(vector<unsigned int> assigned){
+void MySet::setSet(vector<string>& assigned){
     elements = assigned;
 }
+
+
