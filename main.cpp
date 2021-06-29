@@ -7,7 +7,7 @@ using namespace std;
 string del(string input, char cDel);
 string getElements(string& input, char stop);
 void show(vector <string> element);
-vector<string> elementParser(string& input);
+vector<string> elementParser(string input);
 string identify(string& input);
 
 char getOperand(string& input);
@@ -21,52 +21,49 @@ const char DIFFERENCE = '-';
 
 int main(){
     string inputs;
-    string duplicateInput;
 
-    inputs = "[112, 231, 65312, 13] * [6, 4, 7, 8]";
-
-    MySet setOne;
+    //inputs = "[1, 2, 3, 4] + [4, 5, 6, 7]";
     char operand;
-    MySet setTwo;
-
     MySet outSet;
 
+    cout << "Input: ";
+    getline(cin, inputs);
 
-    //cout << "Input: ";
-    //getline(cin, inputs);
-   // duplicateInput = inputs;
-
-    cout << "Inputs: " << inputs << endl << endl;
-
-    cout << "Getting the first set" << endl;
+    //cout << "Inputs: " << inputs << endl << endl;
     string deleted = del(inputs, ' ');
-    cout << "Deleted Space: " << deleted << endl;
-    string set1 = del(del(getElements(deleted, END),START), END);
-    cout << "Set 1: " << set1 << endl;
-    cout << "This is inside a vector: "; show(elementParser(set1));
-    cout << "Set 1: " << set1 << endl;
-    cout << "Input: " << inputs << endl;
-    cout << "Remaining Input: " << deleted << endl << endl;
 
-    cout << "Getting the Operand" << endl;
-    cout << "Operator "<<getOperand(deleted) << endl;
-    cout << "Remaining Input: " << deleted << endl << endl;
+    MySet setOne(elementParser(getElements(deleted, END)));
+    operand = getOperand(deleted);;
+    MySet setTwo(elementParser(getElements(deleted, END)));
 
-    cout << "Getting the second set" << endl;
-    string set2 = del(del(getElements(deleted, END),START), END);
-    cout << "Set 2: " << set2 << endl;
-    cout << "This is inside a vector: "; show(elementParser(set2));
-    cout << "Set 2: " << set2 << endl;
-    cout << "Input: " << inputs << endl;
-    cout << "Remaining Input: " << deleted << endl << endl;
+    switch(operand){
+        case UNION:
+            setOne.Union(setTwo, outSet);
+            break;
+        case INTERSECTION:
+            setOne.Intersection(setTwo, outSet);
+            break;
+        case DIFFERENCE:
+            setOne.Diffference(setTwo, outSet);
+            break;
+    }
+
+    cout << "Output: "; show(outSet.elements);
     return 0;
 }
 
 //Shows all items inside a vector
 void show(vector<string> element){
+    cout << '[';
     for(int i = 0; i < element.size(); i++){
-        cout << element[i] << ',';
+        if(i != element.size() - 1){
+            cout << element[i] << ',';
+        }
+        else{
+            cout << element[i];
+        }
     }
+    cout << ']';
     cout << endl;
 }
 
@@ -89,17 +86,19 @@ string getElements(string& input, char stop){
         out += input[i];
     }
     input.erase(0, pos + 1);
+    out = del(del(out, START), END);
     return out;
 }
 
 //Stores the identified elements to a vector
-vector<string> elementParser(string& input){
+vector<string> elementParser(string input){
     vector<string> out;
     while(!input.empty()){
         out.push_back(identify(input));
     }
     return out;
 }
+
 
 //Element Identifier
 string identify(string& input){

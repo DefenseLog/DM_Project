@@ -5,8 +5,26 @@ MySet::MySet()
 {
 }
 
-void MySet::Union(MySet& set2, MySet& outSet){
+MySet::MySet(vector<string> sets)
+{
+    elements = sets;
+}
 
+void MySet::Union(MySet& set2, MySet& outSet){
+    outSet.elements = elements;
+    int sOut = outSet.elements.size();
+
+    for (int i = 0; i < set2.elements.size(); i++){
+        bool hasDuplicate = false;
+        for (int j = 0; j < sOut ; j++){
+            if (outSet.elements[j]== set2.elements[i]){
+                hasDuplicate = true;
+            }
+        }
+        if(!hasDuplicate){
+            outSet.elements.push_back(set2.elements[i]);
+        }
+    }
 }
 
 void MySet::Intersection(MySet& set2, MySet& outSet){
@@ -20,7 +38,17 @@ void MySet::Intersection(MySet& set2, MySet& outSet){
 }
 
 void MySet::Diffference(MySet& set2, MySet& outSet){
-
+    for (int i = 0; i < elements.size(); i++){
+        bool hasDuplicate = false;
+        for (int j = 0; j < set2.elements.size(); j++){
+            if (elements[i] == set2.elements[j]){
+                hasDuplicate = true;
+            }
+        }
+        if (!hasDuplicate){
+            outSet.elements.push_back(elements[i]);
+        }
+    }
 }
 
 vector<string> MySet::getSet(){

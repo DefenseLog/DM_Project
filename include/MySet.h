@@ -12,6 +12,7 @@ class MySet
 {
     public:
         MySet();
+        MySet(vector<string> sets);
 
 
         void Union(MySet&, MySet&);
