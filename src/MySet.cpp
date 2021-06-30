@@ -1,12 +1,9 @@
 #include "MySet.h"
 
-
-MySet::MySet()
-{
+MySet::MySet(){
 }
 
-MySet::MySet(vector<string> sets)
-{
+MySet::MySet(vector<string> sets){
     elements = sets;
 }
 
@@ -51,12 +48,5 @@ void MySet::Diffference(MySet& set2, MySet& outSet){
     }
 }
 
-vector<string> MySet::getSet(){
-  return elements;
-}
-
-void MySet::setSet(vector<string>& assigned){
-    elements = assigned;
-}
 
 

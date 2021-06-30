@@ -1,5 +1,3 @@
-
-
 #ifndef MYSET_H
 #define MYSET_H
 
@@ -14,18 +12,10 @@ class MySet
         MySet();
         MySet(vector<string> sets);
 
-
         void Union(MySet&, MySet&);
         void Intersection(MySet&, MySet&);
         void Diffference(MySet&, MySet&);
-        vector<string> getSet();
-        void setSet(vector<string>& assigned);
         vector<string> elements;
-
-    protected:
-
-    private:
-
 };
 
 #endif // MYSET_H

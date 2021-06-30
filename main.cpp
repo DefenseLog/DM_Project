@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <MySet.h>
+#include <stdlib.h>
+#include <limits>
 
 using namespace std;
 
@@ -20,35 +22,70 @@ const char DIFFERENCE = '-';
 
 
 int main(){
-    string inputs;
+    bool ending;
 
-    //inputs = "[1, 2, 3, 4] + [4, 5, 6, 7]";
-    char operand;
-    MySet outSet;
+    do{
+        string inputs;
+        char operand;
+        MySet outSet;
+        ending = false;
+        //Getting the Input
+        cout << "Input: ";
+        getline(cin, inputs);
 
-    cout << "Input: ";
-    getline(cin, inputs);
 
-    //cout << "Inputs: " << inputs << endl << endl;
-    string deleted = del(inputs, ' ');
 
-    MySet setOne(elementParser(getElements(deleted, END)));
-    operand = getOperand(deleted);;
-    MySet setTwo(elementParser(getElements(deleted, END)));
+        //----Parsing------
+        //Deletes all the space inside the input
+        string deleted = del(inputs, ' ');
 
-    switch(operand){
-        case UNION:
-            setOne.Union(setTwo, outSet);
-            break;
-        case INTERSECTION:
-            setOne.Intersection(setTwo, outSet);
-            break;
-        case DIFFERENCE:
-            setOne.Diffference(setTwo, outSet);
-            break;
-    }
+        //Gets the Operator
+        operand = getOperand(deleted);;
 
-    cout << "Output: "; show(outSet.elements);
+        //Identify the Sets
+        MySet setOne(elementParser(getElements(deleted, END)));
+        MySet setTwo(elementParser(getElements(deleted, END)));
+
+        //Checks what operator to use
+        switch(operand){
+            case UNION:
+                setOne.Union(setTwo, outSet);
+                break;
+            case INTERSECTION:
+                setOne.Intersection(setTwo, outSet);
+                break;
+            case DIFFERENCE:
+                setOne.Diffference(setTwo, outSet);
+                break;
+        }
+
+        //Shows the Output
+        cout << "Output: "; show(outSet.elements);
+
+
+        //Checks whether the user wants to continue
+        bool again;
+        do{
+            again = false;
+            char check;
+            cout << "\nDo you want to try again? (Y/N): ";
+            cin >> check;
+            check = tolower(check);
+            switch(check){
+                case 'y':
+                    system("cls");
+                    break;
+                case 'n':
+                    ending = true;
+                    break;
+                default:
+                    again = true;
+                    break;
+
+            }
+        }while(again);
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }while(!ending);
     return 0;
 }
 

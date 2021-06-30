@@ -9,15 +9,17 @@
 
 1624350195 c:\users\dell\documents\github\school codes\dm_project\include\myset.h
 
-1624994333 source:c:\users\dell\documents\github\school codes\dm_project\dm_project\main.cpp
+1625017115 source:c:\users\dell\documents\github\school codes\dm_project\dm_project\main.cpp
 	<iostream>
 	<vector>
 	<MySet.h>
+	<stdlib.h>
+	<limits>
 
-1624993667 source:c:\users\dell\documents\github\school codes\dm_project\dm_project\src\myset.cpp
+1624995084 source:c:\users\dell\documents\github\school codes\dm_project\dm_project\src\myset.cpp
 	"MySet.h"
 
-1624987984 c:\users\dell\documents\github\school codes\dm_project\dm_project\include\myset.h
+1624995091 c:\users\dell\documents\github\school codes\dm_project\dm_project\include\myset.h
 	<vector>
 	<iostream>
 
